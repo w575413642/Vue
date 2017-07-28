@@ -9,8 +9,8 @@
 	<body>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<div id="example">{{message}}
-			<span v-bind:title="title" v-if="seen">
-			悬浮查看页面加载
+			<span v-bind:title="title" v-if="seen"  v-for="todo in todos">
+			
 			</span>
 		</div>
 		<script>
@@ -19,7 +19,12 @@
 				data: {
 			    	message: 'Hello Vue!',
 			    	title:'页面加载于' + new Date(),
-			    	seen:false
+			    	seen:false,
+			    	todos: [
+				      { text: '学习 JavaScript' },
+				      { text: '学习 Vue' },
+				      { text: '整个牛项目' }
+			    	]
 			  	}
 			})
 		</script>
