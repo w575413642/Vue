@@ -8,24 +8,20 @@
 
 	<body>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
-
-<div id="example">{{message}}
-	<span v-bind:title="title">
-	
-	1
-	</span>
-</div>
-
-
+		<div id="example">{{message}}
+			<span v-bind:title="title" v-if="seen">
+			悬浮查看页面加载
+			</span>
+		</div>
 		<script>
-var wang = new Vue({
-	el:'#example',
-	data: {
-    	message: 'Hello Vue!',
-    	title:'现在创建'
-  	}
-})
+			var wang = new Vue({
+				el:'#example',
+				data: {
+			    	message: 'Hello Vue!',
+			    	title:'页面加载于' + new Date(),
+			    	seen:false
+			  	}
+			})
 		</script>
 	</body>
-
 </html>
