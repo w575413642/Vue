@@ -10,7 +10,7 @@
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 		<div id="example" v-on:click="resver">
 		{{message}}
-			<span v-bind:title="title" v-if="seen" v-for="todo in todos">
+			<span  v-once v-bind:title="title" v-if="seen" v-for="todo in todos" >
 			{{ todo.text }}
 			</span>
 		</div>
