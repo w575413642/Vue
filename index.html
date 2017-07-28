@@ -8,50 +8,18 @@
 
 	<body>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
-		<!-- 记录 -->
-		<!-- var vm = new Vue({
-  data:{
-  a:1
-  }
-})
-// `vm.a` 是响应的
-vm.b = 2
-// `vm.b` 是非响应的 -->
 
-		<!--Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上：
-Vue.set(vm.someObject, 'b', 2)-->
-
-		<!-- 记录 -->
-<div id="example">{{message}}</div>
+<div id="example">{{message}}
+	
+</div>
 
 
 		<script>
-//			Vue.component('anchored-heading', {
-//				render: function(createElement) {
-//					console.log(createElement)
-//					return createElement(
-//						'h' + this.level, // tag name 标签名称
-//						this.$slots.default // 子组件中的阵列
-//					)
-//				},
-//				props: {
-//					level: {
-//						type: Number,
-//						required: true
-//					}
-//				}
-//			})
-var vm = new Vue({
-  el: '#example',
-  data: {
-    message: '123'
-  }
-})
-//vm.message = 'new message' // 更改数据
-vm.$el.textContent === 'new message' // false
-Vue.nextTick(function () {
-//vm.$el.textContent === 'new message' // true
-vm.message = 'new message' 
+var wang = new Vue({
+	el:'#example',
+	data: {
+    	message: 'Hello Vue!'
+  	}
 })
 		</script>
 	</body>
