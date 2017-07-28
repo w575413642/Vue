@@ -39,13 +39,17 @@
 				      { text: '整个牛项目' }
 			    	]
 			  	},
+			  	created: function () {
+			  	// 初始化调用
+			    	console.log('a is: ' + this.seen)
+			    },
 			  	methods:{
 			  		resver:function(){
 			  			wang.seen = true;
 			  		}
 			  	}
 			})
-			wang.$watch('seen', function (newVal, oldVal) {\
+			wang.$watch('seen', function (newVal, oldVal) {
 				// 实例化某个项目后 改变某个变量监听事件
 			  console.log(newVal);
 			  console.log(oldVal);
