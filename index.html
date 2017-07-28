@@ -10,7 +10,10 @@
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
 
 <div id="example">{{message}}
+	<span v-bind:title="title">
 	
+	1
+	</span>
 </div>
 
 
@@ -18,7 +21,8 @@
 var wang = new Vue({
 	el:'#example',
 	data: {
-    	message: 'Hello Vue!'
+    	message: 'Hello Vue!',
+    	title:'现在创建'
   	}
 })
 		</script>
