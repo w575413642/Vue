@@ -8,10 +8,23 @@
 
 	<body>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
-		<div id="example">{{message}}
-			<span v-bind:title="title" v-if="seen"  v-for="todo in todos">
-			
+		<div id="example" v-on:click="resver">
+		{{message}}
+			<span v-bind:title="title" v-if="seen" v-for="todo in todos">
+			{{ todo.text }}
 			</span>
+		</div>
+		<!-- <todo-item></todo-item> -->
+		<div id="app-7">
+		  <ol>
+		    <!--
+		      现在我们为每个 todo-item 提供待办项对象
+		      待办项对象是变量，即其内容可以是动态的。
+		      我们也需要为每个组件提供一个“key”，晚些时候我们会做个解释。
+		    -->
+		    <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+		    </todo-item>
+		  </ol>
 		</div>
 		<script>
 			var wang = new Vue({
@@ -19,13 +32,47 @@
 				data: {
 			    	message: 'Hello Vue!',
 			    	title:'页面加载于' + new Date(),
-			    	seen:false,
+			    	seen: false,
 			    	todos: [
 				      { text: '学习 JavaScript' },
 				      { text: '学习 Vue' },
 				      { text: '整个牛项目' }
 			    	]
+			  	},
+			  	methods:{
+			  		resver:function(){
+			  			wang.seen = true;
+			  		}
 			  	}
+			})
+			wang.$watch('seen', function (newVal, oldVal) {\
+				// 实例化某个项目后 改变某个变量监听事件
+			  console.log(newVal);
+			  console.log(oldVal);
+			})
+			// Vue.component('todo-item', {
+		 //  		template: '<a>这是个待办项</a>'
+			// })
+			// Vue.component('todo-item', {
+			//   // todo-item 组件现在接受一个
+			//   // "prop"，类似于一个自定义属性
+			//   // 这个属性名为 todo。
+			//   props: ['todo'],
+			//   template: '<li>{{ todo.text }}</li>'
+			// })
+			Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li > {{ todo.text }} </li>'
+			})
+			var app7 = new Vue({
+			  el: '#app-7',
+			  data: {
+			    groceryList: [
+			      { id: 0, text: '蔬菜' },
+			      { id: 1, text: '奶酪' },
+			      { id: 2, text: '随便其他什么人吃的东西' }
+			    ]
+			  }
 			})
 		</script>
 	</body>
