@@ -49,10 +49,10 @@
 			  		}
 			  	}
 			})
-			wang.$watch('seen', function (newVal, oldVal) {
+			wang.$watch('seen', function (a_newData, a_oldData) {
 				// 实例化某个项目后 改变某个变量监听事件
-			  console.log(newVal);
-			  console.log(oldVal);
+			  console.log(a_newData);
+			  console.log(a_oldData);
 			})
 			// Vue.component('todo-item', {
 		 //  		template: '<a>这是个待办项</a>'

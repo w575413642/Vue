@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>template</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<script type="text/javascript" src="vue-resource.js"></script>
+</head>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+</style>
+<body>
+
+	<div id="box" :style="a">
+	123
+		<input type="text" v-model="message">
+		<br/>
+		{{message}}
+		<br/>
+		<div v-once>{{"welcome"}}</div>
+		<div v-once>{{message}}</div>
+		<div v-html="message"></div>
+		<button @click="get">x</button>
+	</div>
+	<div id="apple">
+	<input type="text" v-model="msg">
+		<example :mes-sage="msg" ref="map">
+		</example>
+	</div>
+	<div id="conus">
+	{{num}}
+		<button-x @testb="par"></button-x>
+		<button-x @testb="par"></button-x>
+	</div>
+
+	<div id="te">
+	<currency-input v-model="price"></currency-input>
+	</div>
+</custom-input>
+
+
+</body>
+	<script>
+	Vue.component('currency-input', {
+	  template: '\
+	    <span>\
+	      $\
+	      <input\
+	        ref="input"\
+	        v-bind:value="value"\
+	        v-on:input="updateValue($event.target.value)"\
+	      >\
+	    </span>\
+	  ',
+	  props: ['value'],
+	  methods: {
+	    // 不是直接更新值，而是使用此方法来对输入值进行格式化和位数限制
+	    updateValue: function (value) {
+	      var formattedValue = value
+	        // 删除两侧的空格符
+	        .trim()
+	        // 保留 2 小数位
+	        .slice(
+	          0,
+	          value.indexOf('.') === -1
+	            ? value.length
+	            : value.indexOf('.') + 3
+	        )
+	      // 如果值不统一，手动覆盖以保持一致
+	      if (formattedValue !== value) {
+	        this.$refs.input.value = formattedValue
+	      }
+	      // 通过 input 事件发出数值
+	      this.$emit('input', Number(formattedValue))
+	    }
+	  }
+	})
+	new Vue({
+		el:'#te'
+	})
+		Vue.component('button-x',{
+		template:'<button v-on:click=\'gon\'>{{tesn}}</button>',
+		data: function () {
+		    return {
+		      tesn: 0
+		    }
+		},
+		methods:{
+			gon:function(){
+				this.tesn += 1
+				this.$emit('testb')
+			}
+		}
+	})
+	new Vue({
+		el:'#conus',
+		data:{
+			num:0
+		},
+		methods:{
+			par:function(){
+				this.num += 1
+			}
+		}
+	})
+
+	Vue.component('example', {
+	  props: ['mesSage'],
+	  template: '<span>{{ mesSage }}</span>',
+	  methods: {
+	    updateMessage: function () {
+	      this.message = '更新完成'
+	      console.log(this.$el.textContent) // => '没有更新'
+	      this.$nextTick(function () {
+	        console.log(this.$el.textContent) // => '更新完成'
+	      })
+	    }
+	  }
+	})
+	var a = new Vue({
+	  el: '#apple',
+	  data:{
+	  	msg:124345
+	  }
+	})
+
+		var cat = new Vue({
+			el:'#box',
+			data:{
+				message:"abc",
+				a:{
+					color:'red',
+					background:'yellow'
+				}
+			},
+			methods:{
+				get:function(){
+					this.$http.get("test.json").then(function(res){
+						console.log(res.data)
+					},function(){
+						alert('error')
+					});
+				}
+			}
+		})
+		// cat.message = 'new message' // 更改数据
+		// cat.$el.textContent === 'new message' // false
+		// Vue.nextTick(function () {
+		//   cat.$el.textContent === 'new message' // true
+		// })
+	</script>
+</html>
